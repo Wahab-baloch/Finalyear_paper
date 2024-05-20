@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if blogs %}
+        <div class="content">
+            <table>
+                <tr>
+                    <th style="background-color: #0066cc; color: #fff;">Blog Title</th>
+                    <th style="background-color: #0066cc; color: #fff;">Blog Author</th>
+                    <th style="background-color: #0066cc; color: #fff;">Publication Date</th>
+                </tr>
+                {% for blog in blogs %}
+                <tr>
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.author }}</td>
+                    <td>{{ blog.publication_date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <div class="content">
+            <p>No blogs available.</p>
+        </div>
+    {% endif %}
+    <div class="content">
+        <a href="{% url 'core:addblog' %}" class="button" style="background-color: #ffcc00; color: #333;">Add New Blog</a>
+    </div>
+{% endblock %}
